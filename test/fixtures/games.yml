@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_points: 1
+  opponent_points: 1
+  user: one
+  court: one
+
+two:
+  user_points: 1
+  opponent_points: 1
+  user: two
+  court: two
