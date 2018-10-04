@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 2018_10_03_221237) do
     t.integer "opponent_points"
     t.integer "user_id"
     t.integer "court_id"
+    t.integer "score_keeper_id"
+    t.integer "opponent_id"
+    t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["court_id"], name: "index_games_on_court_id"
