@@ -3,10 +3,10 @@ class CreateGames < ActiveRecord::Migration[5.2]
     create_table :games do |t|
       t.integer :user_points
       t.integer :opponent_points
-      t.references :user, foreign_key: true
-      t.references :court, foreign_key: true
-      t.integer :score_keeper_id
-      t.integer :opponent_id
+      t.references :user, foreign_key: true, index: true
+      t.references :court, foreign_key: true, index: true
+      t.references :score_keeper, index: true, foreign_key: {to_table: :users}
+      t.references :opponent, index: true, foreign_key: {to_table: :users}
       t.boolean :is_active
 
       t.timestamps

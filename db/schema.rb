@@ -34,6 +34,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_221237) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["court_id"], name: "index_games_on_court_id"
+    t.index ["opponent_id"], name: "index_games_on_opponent_id"
+    t.index ["score_keeper_id"], name: "index_games_on_score_keeper_id"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
