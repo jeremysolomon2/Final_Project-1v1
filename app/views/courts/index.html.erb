@@ -1,0 +1,23 @@
+<h1>Courts</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courts.each do |court| %>
+      <tr>
+        <td><%= court.name %></td>
+        <td><%= court.address %></td>
+        <td><%= court.city %></td>
+        <td><%= court.state %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
