@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.delete_all
+admin = User.create!( email: "mail@email.com", password: "password")
+
+10.times do 
+    User.create!(email: Faker::Internet.email, password: "password")
+end
+
+Court.delete_all
+3.times do 
+    Court.create!(
+        address: "123 main street",
+        city: "wynwood",
+        state: "FL",
+        lat: 1.11111,
+        long: 3.33244,
+        name: "WynCourt"
+        )
+end
+
+puts "Life is awesome and I like puppies."
