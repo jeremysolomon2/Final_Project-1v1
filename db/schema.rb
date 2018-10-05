@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_221237) do
+ActiveRecord::Schema.define(version: 2018_10_05_181736) do
 
   create_table "courts", force: :cascade do |t|
     t.string "address", null: false
     t.string "city", null: false
     t.string "state", null: false
-    t.float "lat", null: false
-    t.float "long", null: false
+    t.float "latitude", null: false
+    t.float "longitude", null: false
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
