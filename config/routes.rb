@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  # get 'courts/index'
+  # get 'courts/show'
   devise_for :users
   root 'courts#index'
-
-  # resource :courts, only: [:index]
-  get 'courts', to: 'courts#index'
+  resources :courts
+  
 
 end

@@ -1,0 +1,5 @@
+<h1><%= @court.address %> </h1>
+<% @games.each do |game| %>
+    <%= "Game ID: #{game.id}" %><br>
+    <%= "Court ID: #{game.court_id} "%>
+<% end %>
