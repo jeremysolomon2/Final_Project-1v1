@@ -1,5 +1,25 @@
-<h1><%= @court.address %> </h1>
+
+<h1><%= @court.name %> </h1>
 <% @games.each do |game| %>
     <%= "Game ID: #{game.id}" %><br>
     <%= "Court ID: #{game.court_id} "%>
 <% end %>
+
+<table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+    </thead>
+    <tbody>
+        <% @courts.each do |court| %>
+        <tr>
+            <td><%= link_to "#{court.name}", court %></td>
+            <td><%= court.address %></td>
+            <td><%= court.city %></td>
+            <td><%= court.state %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
