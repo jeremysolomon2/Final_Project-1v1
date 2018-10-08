@@ -1,2 +1,20 @@
 <h1>Courts#index</h1>
-<p>Find me in app/views/courts/index.html.erb</p>
+
+<table class="table">
+    <thead>
+        <th>Name</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+    </thead>
+    <tbody>
+        <% @courts.each do |court| %>
+        <tr>
+            <td><%= link_to "#{court.name}", court %></td>
+            <td><%= court.address %></td>
+            <td><%= court.city %></td>
+            <td><%= court.state %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
