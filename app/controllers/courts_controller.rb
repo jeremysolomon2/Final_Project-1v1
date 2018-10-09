@@ -1,6 +1,31 @@
 class CourtsController < ApplicationController
+  # def index
+  #   @courts = Court.all
+  # end
+
   def index
-    @courts = Court.all
+    respond_to do |format|
+      format.html
+      format.json do
+        @courts = Court.all
+        render json:  {
+                        type: "FeatureCollection",
+                        features: @courts.map do |court|
+                          {
+                            type: "Feature",
+                            geometry: {
+                              type: "Point",
+                              coordinates: [court.longitude, court.latitude]
+                            },
+                            properties: {
+                              name: court.name,
+                              id: court.id
+                            }
+                          }
+                        end
+                      }
+      end
+    end
   end
 
   def show
