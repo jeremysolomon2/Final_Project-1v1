@@ -1,5 +1,5 @@
 import ReactOnRails from 'react-on-rails';
-
+import 'babel-polyfill'
 import HelloWorld from '../bundles/HelloWorld/components/HelloWorld';
 import Map from '../bundles/Map/components/Map';
 

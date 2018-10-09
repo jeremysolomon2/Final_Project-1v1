@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
+import axios from 'axios';
  
 export default class Map extends Component {
-    componentDidMount() {
+
+    constructor() {
+        super();
+        this.state = {
+            courts: []
+        }
+    }
+    async componentDidMount() {
+        let data;
+        data = await axios.get('./courts.json')
+        this.setState({ courts: data.data })
+        console.log(this.state.courts)
         mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXdlaXNzMTk4MiIsImEiOiJIeHpkYVBrIn0.3N03oecxx5TaQz7YLg2HqA'
         let { coordinates } = this.props;
         const mapOptions = {
@@ -38,6 +50,23 @@ export default class Map extends Component {
           );
         }
       }
+
+      fetchCourts = () => {
+          const map = this.map;
+          const self = this;
+          axios.get('./courts.json')
+          .then((res) => {
+              let newMarkers = res.data
+              newMarkers.features.forEach(function (court, i) {
+                  let elm = document.createElement('div')
+                  elm.className = "basketball-map"
+                  let marker = new mapboxgl.Marker(elm)
+                //   let popup = new mapboxgl.Popup({ offset: 25 })
+                  .setLngLat(court.geometry.coordinates)
+                  marker.addTo(map)
+              })
+          })
+      }
      
     createMap = (mapOptions, geolocationOptions) => {
     this.map = new mapboxgl.Map(mapOptions);
@@ -49,6 +78,7 @@ export default class Map extends Component {
         })
     );
     map.on('load', (event) => {
+        this.fetchCourts();
         map.addSource(
         'courts',
         {
