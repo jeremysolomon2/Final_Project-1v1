@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
+import ReactDOMServer from 'react-dom/server'
+import Popup from './Popup'
  
 export default class Map extends Component {
 
@@ -60,9 +62,13 @@ export default class Map extends Component {
               newMarkers.features.forEach(function (court, i) {
                   let elm = document.createElement('div')
                   elm.className = "basketball-map"
+                  let popup = new mapboxgl.Popup({ offset: 25 })
+                  .setHTML(ReactDOMServer.renderToStaticMarkup(
+                      <Popup court={court.properties}></Popup>
+                  ))      
                   let marker = new mapboxgl.Marker(elm)
-                //   let popup = new mapboxgl.Popup({ offset: 25 })
                   .setLngLat(court.geometry.coordinates)
+                  .setPopup(popup)
                   marker.addTo(map)
               })
           })
