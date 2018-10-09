@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # get 'courts/show'
   devise_for :users
   root 'courts#index'
-  resources :courts
+  resources :courts, only: [:index, :show]
   
 
 end
