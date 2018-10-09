@@ -4,14 +4,43 @@ import mapboxgl from 'mapbox-gl';
 export default class Map extends Component {
   componentDidMount() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiamVyZW15c29sb21vbjIiLCJhIjoiY2puMjhndDQ3MDByZDNxbzRvNGdiOWduZiJ9.UWv2dTb0-kqL7ROiMuShPA'
-    this.createMap();
-  }
- 
-  createMap = () => {
-    this.map = new mapboxgl.Map({
+    let { coordinates } = this.props;
+    const mapOptions = {
       container: this.mapContainer,
-      style: `mapbox://styles/mapbox/streets-v9`
-    });
+      style: `mapbox://styles/mapbox/streets-v9`,
+      zoom: 12,
+      center: coordinates
+    };
+    const geolocationOptions = {
+        enableHighAccuracy: true,
+        maximumAge        : 30000,
+        timeout           : 27000
+      };
+    if ("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(
+        // success callback
+        (position) => {
+            coordinates = [
+                            position.coords.longitude,
+                            position.coords.latitude
+                          ];
+            document.getElementById("long")
+                    .innerHTML = coordinates[0];
+            document.getElementById("lat")
+                    .innerHTML = coordinates[1];
+            mapOptions.center = coordinates;
+            this.createMap(mapOptions);
+          },
+        // failure callback
+        () => { this.createMap(mapOptions) },
+        // options
+        geolocationOptions
+        );
+    }
+  }
+
+  createMap = mapOptions => {
+    this.map = new mapboxgl.Map(mapOptions);
     const map = this.map;
     map.on('load', (event) => {
       map.addSource(
@@ -24,7 +53,6 @@ export default class Map extends Component {
       map.addLayer({ id: 'courts', type: 'circle', source: 'courts'});
     });
   }
- 
 
   render() {
     const style = {
