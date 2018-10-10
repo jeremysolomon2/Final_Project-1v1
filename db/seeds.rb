@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.delete_all
-admin = User.create!( email: "mail@email.com", password: "password")
+admin = User.create!( email: "mail@email.com", password: "password", nickname: "admin")
 
-10.times do 
-    User.create!(email: Faker::Internet.email, password: "password")
+10.times do |n|
+    User.create!(email: Faker::Internet.email, password: "password", nickname: "user#{n+1}")
 end
 
 Court.delete_all
