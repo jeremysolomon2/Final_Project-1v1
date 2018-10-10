@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_08_195733) do
+ActiveRecord::Schema.define(version: 2018_10_10_204711) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "courts", force: :cascade do |t|
     t.string "address", null: false
@@ -26,10 +29,10 @@ ActiveRecord::Schema.define(version: 2018_10_08_195733) do
   create_table "games", force: :cascade do |t|
     t.integer "user_points"
     t.integer "opponent_points"
-    t.integer "user_id"
-    t.integer "court_id"
-    t.integer "score_keeper_id"
-    t.integer "opponent_id"
+    t.bigint "user_id"
+    t.bigint "court_id"
+    t.bigint "score_keeper_id"
+    t.bigint "opponent_id"
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,8 +50,14 @@ ActiveRecord::Schema.define(version: 2018_10_08_195733) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "games", "courts"
+  add_foreign_key "games", "users"
+  add_foreign_key "games", "users", column: "opponent_id"
+  add_foreign_key "games", "users", column: "score_keeper_id"
 end
