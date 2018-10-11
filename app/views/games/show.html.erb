@@ -1,0 +1,3 @@
+<h1><%= "#{@game.user.nickname} vs #{@game.opponent&.nickname}!!" %></h1>
+
+<%= react_component 'Game', props: { game: @game} %>

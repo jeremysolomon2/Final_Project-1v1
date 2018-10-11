@@ -3,14 +3,22 @@
 
 <table class="table">
     <thead>
-        <th>UserID</th>
-        <th>OpponentID</th>
+        <th>Player 1</th>
+        <th>Player 1 Score</th>
+        <th></th>
+        <th>Opponent</th>
+        <th>Scorekeeper</th>
+        <th>Opponent Score</th>
     </thead>
     <tbody>
         <% @games.each do |game| %>
         <tr>
-            <td><%= game.user_id %></td>
-            <td><%= game.opponent_id %></td>
+            <td><%= game.user.nickname %></td>
+            <td><%= game.user_points %></td>
+            <td>vs</td>
+            <td><%= game.opponent&.nickname %></td>
+            <td><%= game.opponent_points %></td>
+            <td><%= game.score_keeper&.nickname %></td>
         </tr>
         <% end %>
     </tbody>
