@@ -7,19 +7,21 @@
         <th>Player 1 Score</th>
         <th></th>
         <th>Opponent</th>
-        <th>Opponent Score</th>
         <th>Scorekeeper</th>
+        <th>Opponent Score</th>
+        <th></th>
     </thead>
     <tbody>
         <% @games.each do |game| %>
-        <tr>
-            <td><%= game.user.nickname %></td>
-            <td><%= game.user_points %></td>
-            <td>vs</td>
-            <td><%= game.opponent&.nickname %></td>
-            <td><%= game.opponent_points %></td>
-            <td><%= game.score_keeper&.nickname %></td>
-        </tr>
+            <tr>
+                <td><%= game.user.nickname %></td>
+                <td><%= game.user_points %></td>
+                <td>vs</td>
+                <td><%= game.opponent&.nickname %></td>
+                <td><%= game.opponent_points %></td>
+                <td><%= game.score_keeper&.nickname %></td>
+                <td><%= link_to "Go to game", game %></td>
+            </tr>
         <% end %>
     </tbody>
 </table>
