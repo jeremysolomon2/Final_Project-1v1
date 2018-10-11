@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'courts#index'
   resources :courts, only: [:index, :show]
+  resources :games
   
 
 end
