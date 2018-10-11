@@ -1,5 +1,6 @@
 
-<h1><%= @court.name %> </h1>
+<h1 class="text-center"><%= @court.name %> </h1>
+<h3 class="text-center"><%= "#{@court.address}, #{@court.city}, #{@court.state}" %> </h1>
 
 <table class="table">
     <thead>
@@ -7,8 +8,8 @@
         <th>Player 1 Score</th>
         <th></th>
         <th>Opponent</th>
-        <th>Scorekeeper</th>
         <th>Opponent Score</th>
+        <th>Scorekeeper</th>
         <th></th>
     </thead>
     <tbody>
@@ -20,7 +21,7 @@
                 <td><%= game.opponent&.nickname %></td>
                 <td><%= game.opponent_points %></td>
                 <td><%= game.score_keeper&.nickname %></td>
-                <td><%= link_to "Go to game", game %></td>
+                <td><%= link_to "Go to game", game, class: "btn btn-primary" %></td>
             </tr>
         <% end %>
     </tbody>
