@@ -1,7 +1,8 @@
-
 <h1 class="text-center"><%= @court.name %> </h1>
 <h3 class="text-center"><%= "#{@court.address}, #{@court.city}, #{@court.state}" %> </h1>
-
+<div class="text-center">
+    <button id="create-game" class="btn btn-primary"><%= button_to "Create Game", {controller: "games", action: "create", court_id: @court.id }  %></button>
+</div>
 <table class="table">
     <thead>
         <th>Player 1</th>
