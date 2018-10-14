@@ -1,5 +1,7 @@
-<%= form_tag({controller: "games", action: "set_scorekeeper"}, method: "post") do %>
+<%= form_tag set_scorekeeper_path(:id => game.id) do %>
+
     <div class="action">
         <%= submit_tag("Join Game") %>
+        
     </div>
 <% end  %>

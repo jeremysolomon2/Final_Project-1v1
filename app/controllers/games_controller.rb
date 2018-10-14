@@ -16,7 +16,8 @@ class GamesController < ApplicationController
 
     def set_opponent 
       @game.opponent = current_user
-      @game.save
+      @game.save 
+       #@game.update_attribute(:opponent, current_user.id)
       redirect_to @game
     end 
 
