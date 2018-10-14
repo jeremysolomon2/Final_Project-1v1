@@ -5,6 +5,7 @@
 </div>
 <table class="table">
     <thead>
+        <th>Game ID</th>
         <th>Player 1</th>
         <th>Player 1 Score</th>
         <th></th>
@@ -12,15 +13,16 @@
         <th>Opponent Score</th>
         <th>Scorekeeper</th>
         <th></th>
-    </thead>
+    </thead> 
     <tbody>
         <% @games.each do |game| %>
             <tr>
+                <td><%= game.id %></td>
                 <td><%= game.user.nickname %></td>
                 <td><%= game.user_points %></td>
                 <td>vs</td>
                 <% if game.opponent.nil? %>
-                    <td><%= button_to "Join Game", {controller: "games", action: "update", court_id: @court.id}, class: 'btn btn-primary' %></td>
+                    <td><%= render 'games/set_opponent', game: game %></td>
                 <% else %>
                      <td><%= game.opponent&.nickname %></td>
                 <% end %>

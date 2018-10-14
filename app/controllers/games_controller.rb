@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-    before_action :set_game, only: [:show, :update]
+    before_action :set_game, only: [:show, :update, :set_opponent]
     skip_before_action :verify_authenticity_token
 
     def show
@@ -10,10 +10,15 @@ class GamesController < ApplicationController
     end
 
     def update
-      @game.update(game_params)
+      # @game.update(game_params)
       render json: @game
     end
 
+    def set_opponent 
+      @game.opponent = current_user
+      @game.save
+      redirect_to @game
+    end 
 
     def create
       @game = current_user.games.new(court_id: params[:court_id])
