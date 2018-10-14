@@ -1,7 +1,7 @@
 <h1 class="text-center"><%= @court.name %> </h1>
 <h3 class="text-center"><%= "#{@court.address}, #{@court.city}, #{@court.state}" %> </h1>
 <div class="text-center">
-    <button id="create-game" class="btn btn-primary"><%= button_to "Create Game", {controller: "games", action: "create", court_id: @court.id }  %></button>
+        <%= button_to "Create Game", {controller: "games", action: "create", court_id: @court.id }, class: 'btn btn-primary' %>
 </div>
 <table class="table">
     <thead>
@@ -19,7 +19,11 @@
                 <td><%= game.user.nickname %></td>
                 <td><%= game.user_points %></td>
                 <td>vs</td>
-                <td><%= game.opponent&.nickname %></td>
+                <% if game.opponent.nil? %>
+                    <td><%= button_to "Join Game", {controller: "games", action: "update", court_id: @court.id}, class: 'btn btn-primary' %></td>
+                <% else %>
+                     <td><%= game.opponent&.nickname %></td>
+                <% end %>
                 <td><%= game.opponent_points %></td>
                 <td><%= game.score_keeper&.nickname %></td>
                 <td><%= link_to "Go to game", game, class: "btn btn-primary" %></td>

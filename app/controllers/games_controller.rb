@@ -3,7 +3,6 @@ class GamesController < ApplicationController
     skip_before_action :verify_authenticity_token
 
     def show
-
       @court = @game.court
       @user = @game.user
       @score_keeper = @game.score_keeper || {nickname: "No score keeper yer"}
@@ -34,8 +33,7 @@ class GamesController < ApplicationController
     end
 
     def game_params
-      
-      params.require(:game).permit(:user_points, :opponent_points, :data)
+      params.require(:game).permit(:user_points, :opponent_points)
     end
   
   end
