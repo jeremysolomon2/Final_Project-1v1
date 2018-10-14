@@ -30,7 +30,7 @@ class CourtsController < ApplicationController
 
   def show
     @court = Court.find(params[:id])
-    @games = Game.where(court_id: @court)
+    @games = Game.where(court_id: @court).order('id ASC')
   end
 
 end

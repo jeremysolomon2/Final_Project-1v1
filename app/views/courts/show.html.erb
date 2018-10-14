@@ -27,7 +27,11 @@
                      <td><%= game.opponent&.nickname %></td>
                 <% end %>
                 <td><%= game.opponent_points %></td>
-                <td><%= game.score_keeper&.nickname %></td>
+                <% if game.score_keeper.nil? %>
+                    <td><%= render 'games/set_scorekeeper', game: game %></td>
+                <% else %>
+                     <td><%= game.score_keeper&.nickname %></td>
+                <% end %>
                 <td><%= link_to "Go to game", game, class: "btn btn-primary" %></td>
             </tr>
         <% end %>
