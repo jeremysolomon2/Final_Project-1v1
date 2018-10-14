@@ -1,0 +1,12 @@
+.stopClock {
+    margin-top: 50px;
+    margin-bottom: 50px
+}
+
+.score {
+    font-size: 4rem;
+}
+
+.score-left {
+    border-right: 5px solid gray;
+}
