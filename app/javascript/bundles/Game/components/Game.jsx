@@ -98,7 +98,7 @@ export default class Game extends Component {
             <h1>{this.msToTime(remainingTime)}</h1>
           </div>
           <div>
-            <button className="btn btn-primary" onClick={this.startStop} id="startStop">
+            <button className="btn-lg btn-primary" onClick={this.startStop} id="startStop">
             { timerRunning ? "Stop" : "Start" }
             </button>
           </div>
@@ -108,21 +108,21 @@ export default class Game extends Component {
             <h3>{user.nickname}</h3>
             <div className="pb-3 pt-3 score" >{game.user_points}</div>
             <div>
-              <button className="btn btn-primary mr-1" onClick={this.incrementPlayerOne}>+1</button>
-              <button className="btn btn-danger" onClick={this.decrementPlayerOne}>-1</button>
+              <button className="btn-lg btn-primary mr-1" onClick={this.incrementPlayerOne}>+1</button>
+              <button className="btn-lg btn-danger" onClick={this.decrementPlayerOne}>-1</button>
             </div>
           </div>
           <div className="col-6 text-center">
             <h3>{opponent.nickname}</h3>
             <div className="pb-3 pt-3 score">{game.opponent_points}</div>
             <div>
-              <button className="btn btn-primary mr-1" onClick={this.incrementPlayerTwo}>+1</button>
-              <button className="btn btn-danger" onClick={this.decrementPlayerTwo}>-1</button>
+              <button className="btn-lg btn-primary mr-1" onClick={this.incrementPlayerTwo}>+1</button>
+              <button className="btn-lg btn-danger" onClick={this.decrementPlayerTwo}>-1</button>
             </div>
           </div>
         </div>
         <div className="text-center pt-4">
-          <button className="btn btn-secondary">Save Game</button>
+          <button className="btn-lg btn-secondary">Save Game</button>
         </div>
       </div>
     )
