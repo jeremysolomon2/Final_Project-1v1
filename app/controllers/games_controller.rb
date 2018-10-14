@@ -1,21 +1,27 @@
 class GamesController < ApplicationController
-    before_action :set_game, only: [:show, :update, :set_opponent]
+    before_action :set_game, only: [:show, :update, :set_opponent, :set_scorekeeper]
     skip_before_action :verify_authenticity_token
 
     def show
       @court = @game.court
       @user = @game.user
-      @score_keeper = @game.score_keeper || {nickname: "No score keeper yer"}
-      @opponent = @game.opponent || {nickname: "No opponent yet"}
+      @score_keeper = @game.score_keeper
+      @opponent = @game.opponent
     end
 
     def update
-      # @game.update(game_params)
+      @game.update(game_params)
       render json: @game
     end
 
     def set_opponent 
       @game.opponent = current_user
+      @game.save
+      redirect_to @game
+    end 
+
+    def set_scorekeeper 
+      @game.score_keeper = current_user
       @game.save
       redirect_to @game
     end 
