@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ @font-face {
+    font-family: 'esp';
+    src: font-url('esp/esp.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal; 
+}
+
+* {
+    font-family: 'esp';
+}
