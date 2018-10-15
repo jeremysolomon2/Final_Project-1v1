@@ -17,4 +17,3 @@ test:
 production:
   <<: *default
   database: Final_Project-1v1_production
-  url: <%= ENV["SOME_OTHER_URL"] %>
