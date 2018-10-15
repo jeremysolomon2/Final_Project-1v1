@@ -12,6 +12,9 @@
     "react-dom": "^16.5.2",
     "react-on-rails": "11.1.6"
   },
+  "scripts": {
+    "postinstall": "cd client && npm install" 
+  },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
   }
