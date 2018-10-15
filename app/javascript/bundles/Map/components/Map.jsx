@@ -95,7 +95,7 @@ export default class Map extends Component {
   render() {
     const style = {
       width: '100%',
-      height: '500px',
+      height: '550px',
       backgroundColor: 'azure'
     };
     return <div style={style} ref={el => this.mapContainer = el} />;

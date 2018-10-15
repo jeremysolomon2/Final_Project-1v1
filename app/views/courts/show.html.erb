@@ -1,21 +1,24 @@
-<h2 class="text-center"><%= @court.name %> </h1>
-<h4 class="text-center"><%= "#{@court.address}, #{@court.city}, #{@court.state}" %> </h1>
+<h1 class="text-center"><%= @court.name %> </h1>
+<h3 class="text-center"><%= "#{@court.address}, #{@court.city}, #{@court.state}" %> </h1>
 <div class="text-center pb-2">
         <%= button_to "Create Game", {controller: "games", action: "create", court_id: @court.id }, class: 'btn btn-primary' %>
 </div>
 <table class="table">
     <thead>
-        <th>Player 1</th>
         <th></th>
+        <th>Player1</th>
         <th>Opponent</th>
-        <th>Scorekeeper</th>
-        <th></th>
+        <th>Ref</th>
     </thead> 
     <tbody>
         <% @games.each do |game| %>
             <tr>
+                <td>
+                    <%= link_to game do%>
+                        <%= image_tag('BasketBall.png', width: 20) %>
+                    <% end %>
+                </td>
                 <td><%= game.user.nickname %></td>
-                <td>vs</td>
                 <% if game.opponent.nil? %>
                     <td><%= render 'games/set_opponent', game: game %></td>
                 <% else %>
@@ -26,7 +29,7 @@
                 <% else %>
                      <td><%= game.score_keeper&.nickname %></td>
                 <% end %>
-                <td><%= link_to "Go to game", game, class: "btn btn-primary" %></td>
+                
             </tr>
         <% end %>
     </tbody>
