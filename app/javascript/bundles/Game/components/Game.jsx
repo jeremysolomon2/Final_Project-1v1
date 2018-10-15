@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
  
 export default class Game extends Component {
 
   state = { 
             game:           this.props.game,
-            remainingTime:  .1 * 60 * 1000,
+            remainingTime:  20 * 60 * 1000,
             timerRunning:   false
           }
 
@@ -94,28 +93,36 @@ export default class Game extends Component {
     const { game, remainingTime, timerRunning } = this.state;
     return (
       <div>
-        <h1>Game React Component</h1>
-          {this.msToTime(remainingTime)}
-        <button onClick={this.startStop} id="startStop">
-          { timerRunning ? "Stop" : "Start" }
-        </button>
+        <div className="text-center stopClock">
+          <div>
+            <h1>{this.msToTime(remainingTime)}</h1>
+          </div>
+          <div>
+            <button className="btn-lg btn-primary" onClick={this.startStop} id="startStop">
+            { timerRunning ? "Stop" : "Start" }
+            </button>
+          </div>
+        </div>
         <div className="row">
-          <div className="col-sm-6">
-            <h3>Player 1: {user.nickname}</h3>
-            <span>{game.user_points}</span>
+          <div className="col-6 text-center score-left">
+            <h3>{user.nickname}</h3>
+            <div className="pb-3 pt-3 score" >{game.user_points}</div>
             <div>
-              <button onClick={this.incrementPlayerOne}>+</button>
-              <button onClick={this.decrementPlayerOne}>-</button>
+              <button className="btn-lg btn-primary mr-1" onClick={this.incrementPlayerOne}>+1</button>
+              <button className="btn-lg btn-danger" onClick={this.decrementPlayerOne}>-1</button>
             </div>
           </div>
-          <div className="col-sm-6">
-            <h3>Player 2: {opponent.nickname}</h3>
-            <span>{game.opponent_points}</span>
+          <div className="col-6 text-center">
+            <h3>{opponent.nickname}</h3>
+            <div className="pb-3 pt-3 score">{game.opponent_points}</div>
             <div>
-              <button onClick={this.incrementPlayerTwo}>+</button>
-              <button onClick={this.decrementPlayerTwo}>-</button>
+              <button className="btn-lg btn-primary mr-1" onClick={this.incrementPlayerTwo}>+1</button>
+              <button className="btn-lg btn-danger" onClick={this.decrementPlayerTwo}>-1</button>
             </div>
           </div>
+        </div>
+        <div className="text-center pt-4">
+          <button className="btn-lg btn-secondary">Save Game</button>
         </div>
       </div>
     )
