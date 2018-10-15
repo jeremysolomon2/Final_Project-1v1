@@ -89,7 +89,7 @@ export default class Game extends Component {
   }
 
   render() {
-    const { user, opponent, score_keeper } = this.props; 
+    const { user, opponent, score_keeper, current_user } = this.props; 
     const { game, remainingTime, timerRunning } = this.state;
     return (
       <div>
@@ -97,33 +97,45 @@ export default class Game extends Component {
           <div>
             <h1>{this.msToTime(remainingTime)}</h1>
           </div>
+          {
+            current_user.id === score_keeper.id &&
           <div>
             <button className="btn-lg btn-primary" onClick={this.startStop} id="startStop">
             { timerRunning ? "Stop" : "Start" }
             </button>
           </div>
+          }
         </div>
         <div className="row">
           <div className="col-6 text-center score-left">
             <h3>{user.nickname}</h3>
-            <div className="pb-3 pt-3 score" >{game.user_points}</div>
-            <div>
-              <button className="btn-lg btn-primary mr-1" onClick={this.incrementPlayerOne}>+1</button>
-              <button className="btn-lg btn-danger" onClick={this.decrementPlayerOne}>-1</button>
-            </div>
+            <div className="pb-3 pt-3 score" >{game.user_points || 0}</div>
+            {
+              current_user.id === score_keeper.id &&
+              <div>
+                <button className="btn-lg btn-primary mr-1" onClick={this.incrementPlayerOne}>+1</button>
+                <button className="btn-lg btn-danger" onClick={this.decrementPlayerOne}>-1</button>
+              </div>
+            }
           </div>
           <div className="col-6 text-center">
             <h3>{opponent.nickname}</h3>
-            <div className="pb-3 pt-3 score">{game.opponent_points}</div>
+            <div className="pb-3 pt-3 score">{game.opponent_points || 0}</div>
+            {
+              current_user.id === score_keeper.id &&
             <div>
               <button className="btn-lg btn-primary mr-1" onClick={this.incrementPlayerTwo}>+1</button>
               <button className="btn-lg btn-danger" onClick={this.decrementPlayerTwo}>-1</button>
             </div>
+            }
           </div>
         </div>
+        {
+          current_user.id === score_keeper.id &&
         <div className="text-center pt-4">
           <button className="btn-lg btn-secondary">Save Game</button>
         </div>
+        }
       </div>
     )
   }
