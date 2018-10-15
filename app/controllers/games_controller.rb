@@ -5,8 +5,8 @@ class GamesController < ApplicationController
     def show
       @court = @game.court
       @user = @game.user
-      @score_keeper = @game.score_keeper
-      @opponent = @game.opponent
+      @score_keeper = @game.score_keeper || { nickname: "No scorekeeper", id: 0}
+      @opponent = @game.opponent || { nickname: "TBD" }
     end
 
     def update
