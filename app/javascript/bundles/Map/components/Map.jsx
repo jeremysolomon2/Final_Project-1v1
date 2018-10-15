@@ -38,10 +38,6 @@ export default class Map extends Component {
                               position.coords.longitude,
                               position.coords.latitude
                             ];
-              document.getElementById("long")
-                      .innerHTML = coordinates[0];
-              document.getElementById("lat")
-                      .innerHTML = coordinates[1];
               mapOptions.center = coordinates;
               this.createMap(mapOptions, geolocationOptions);
             },
