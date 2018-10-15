@@ -17,3 +17,5 @@ test:
 production:
   <<: *default
   database: Final_Project-1v1_production
+  username: Final_Project-1v1
+  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
