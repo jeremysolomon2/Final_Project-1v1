@@ -7,11 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.delete_all
-admin = User.create!( email: "mail@email.com", password: "password", nickname: "admin")
+# 10.times do |n|
+#     User.create!(email: Faker::Internet.email, password: "password", nickname: "user#{n+1}")
+# end
 
-10.times do |n|
-    User.create!(email: Faker::Internet.email, password: "password", nickname: "user#{n+1}")
-end
+User.create!(email: "michael@gmail.com", password: "password", nickname: "His_Airness")
+User.create!(email: "larry@gmail.com", password: "password", nickname: "UncleLarry")
+User.create!(email: "vince@gmail.com", password: "password", nickname: "Vinsanity")
+User.create!(email: "shaq@gmail.com", password: "password", nickname: "Shaq")
+User.create!(email: "chris@gmail.com", password: "password", nickname: "CP3")
+User.create!(email: "lebron@gmail.com", password: "password", nickname: "The_King")
+User.create!(email: "yao@gmail.com", password: "password", nickname: "Yao")
 
 Court.delete_all
 Court.create!(
@@ -138,36 +144,11 @@ puts "Life is awesome and I like puppies."
 
 Game.create!(
     user_id: 1,
-    court_id: 1,
-    opponent_id: 6,
-    is_active: true,
-    opponent_points:7,
-    user_points: 10
-)
-Game.create!(
-    user_id: 2,
-    court_id: 1,
-    is_active: false,
-)
-Game.create!(
-    user_id: 3,
-    court_id: 1,
-    opponent_id: 7,
-    is_active: false,
-    score_keeper_id: 8
-)
-Game.create!(
-    user_id: 4,
     court_id: 2,
-    opponent_id:8,
+    opponent_id:6,
     is_active: true,
     opponent_points: 8,
-    user_points: 4
-)
-Game.create!(
-    user_id: 5,
-    court_id: 2,
-    is_active: false
+    user_points: 8
 )
 
 # Veterans Memorial NE 123 Street & West Dixie highway North Miami, Florida 33161
