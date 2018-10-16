@@ -4,30 +4,30 @@
         <%= button_to "Create Game", {controller: "games", action: "create", court_id: @court.id }, class: 'btn btn-primary' %>
 </div>
 <table class="table">
-    <thead>
+    <thead >
         <th></th>
-        <th>Player1</th>
-        <th>Opponent</th>
-        <th>Ref</th>
+        <th class="text-center">Player1</th>
+        <th class="text-center">Opponent</th>
+        <th class="text-center">Ref</th>
     </thead> 
     <tbody>
         <% @games.each do |game| %>
             <tr>
-                <td>
+                <td class="text-center">
                     <%= link_to game do%>
                         <%= image_tag('BasketBall.png', width: 20) %>
                     <% end %>
                 </td>
-                <td><%= game.user.nickname %></td>
+                <td class="text-center"><%= game.user.nickname %></td>
                 <% if game.opponent.nil? %>
-                    <td><%= render 'games/set_opponent', game: game %></td>
+                    <td class="text-center"><%= render 'games/set_opponent', game: game %></td>
                 <% else %>
-                     <td><%= game.opponent&.nickname %></td>
+                     <td class="text-center"><%= game.opponent&.nickname %></td>
                 <% end %>
                 <% if game.score_keeper.nil? %>
-                    <td><%= render 'games/set_scorekeeper', game: game %></td>
+                    <td class="text-center"><%= render 'games/set_scorekeeper', game: game %></td>
                 <% else %>
-                     <td><%= game.score_keeper&.nickname %></td>
+                     <td class="text-center"><%= game.score_keeper&.nickname %></td>
                 <% end %>
                 
             </tr>
