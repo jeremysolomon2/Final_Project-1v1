@@ -1,24 +1,2 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This was our final group project at Wyncode.  We used Ruby on Rails for the majority of our project, but also used React in key areas.  The scorekeeper page is one key area.  It allows for keeping score of a 1v1 basketball game, which persists to the database.  It also has a stop clock on this page, with the goal of persisting to the database very soon.  The 2nd key area we used React is for the page containing our basketball courts map, implement with Mapbox.  
